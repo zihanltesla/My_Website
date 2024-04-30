@@ -29,9 +29,6 @@ function Home2() {
               <br />
               My field of Interest's are building wesite and connection protocols;
               <i>
-                <b className="purple">
-                  Blockchain.
-                </b>
               </i>
               <br />
               <br />
@@ -45,7 +42,7 @@ function Home2() {
               </i>
               &nbsp; like
               <i>
-                <b className="purple"> React.js and Next.js</b>
+                <b className="purple"> React.js and Angular.js</b>
               </i>
             </p>
           </Col>
