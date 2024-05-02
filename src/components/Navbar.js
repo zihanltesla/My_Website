@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import {
   AiOutlineHome,
   AiOutlineUser,
-  AiOutlineFundProjectionScreen
+  // AiOutlineFundProjectionScreen
 } from "react-icons/ai";
 
 import { CgFileDocument } from "react-icons/cg";
