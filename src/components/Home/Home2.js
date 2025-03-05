@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/avatar_face.svg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
@@ -19,15 +19,15 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I am now study at University of Zurich, and now the fourth semester.
+              I am now study at University of Zurich, and now the sixth semester, I am writing my master thesis at Volvo Cars.
               <br />
               <br />I am fluent in classics like
               <i>
-                <b className="purple"> Python, Java and Javascript </b>
+                <b className="purple"> Python, C, Java and Javascript </b>
               </i>
               <br />
               <br />
-              My field of Interest's are building wesite and connection protocols;
+              My field of Interest's are building wesite and connection protocols, I am also interested in the field of Artificial Intelligence and Machine Learning.
               <i>
               </i>
               <br />
