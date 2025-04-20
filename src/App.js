@@ -35,6 +35,7 @@ function App() {
         <Navbar />
         <ScrollToTop />
         <Routes>
+          <Route path="/favicon.svg" element={null} /> {/* 静态文件例外 */}
           <Route path="/" element={<Home />} />
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
