@@ -23,6 +23,11 @@ function Home() {
               <h1 className="heading-name">
                 I'M
                 <strong className="main-name"> Zihan Liu</strong>
+                <br></br>
+                or
+                <br></br>
+                You can also call me
+                <strong className="main-name"> Hanky</strong>
               </h1>
 
               <div style={{ padding: 50, textAlign: "left" }}>

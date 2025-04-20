@@ -1,11 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/avatar_face.jpg";
 import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
+  // AiOutlineTwitter,
+  // AiFillInstagram,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 
@@ -19,19 +19,16 @@ function Home2() {
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
             <p className="home-about-body">
-              I am now study at University of Zurich, and now the fourth year.
+              I am now study at University of Zurich, and now the sixth semester, I am writing my master thesis at Volvo Cars.
               <br />
               <br />I am fluent in classics like
               <i>
-                <b className="purple"> Python, Java and Javascript </b>
+                <b className="purple"> Python, C, Java and Javascript </b>
               </i>
               <br />
               <br />
-              My field of Interest's are building wesite and connection protocols;
+              My field of Interest's are building wesite and connection protocols, I am also interested in the field of Artificial Intelligence and Machine Learning.
               <i>
-                <b className="purple">
-                  Blockchain.
-                </b>
               </i>
               <br />
               <br />
@@ -45,7 +42,7 @@ function Home2() {
               </i>
               &nbsp; like
               <i>
-                <b className="purple"> React.js and Next.js</b>
+                <b className="purple"> React.js and Angular.js</b>
               </i>
             </p>
           </Col>
@@ -64,7 +61,7 @@ function Home2() {
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href="https://github.com/soumyajit4419"
+                  href="https://github.com/zihanltesla"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -72,7 +69,7 @@ function Home2() {
                   <AiFillGithub />
                 </a>
               </li>
-              <li className="social-icons">
+              {/* <li className="social-icons">
                 <a
                   href="https://twitter.com/Soumyajit4419"
                   target="_blank"
@@ -81,10 +78,10 @@ function Home2() {
                 >
                   <AiOutlineTwitter />
                 </a>
-              </li>
+              </li> */}
               <li className="social-icons">
                 <a
-                  href="https://www.linkedin.com/in/soumyajit4419/"
+                  href="https://www.linkedin.com/in/zihan-liu-682039280/"
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
@@ -92,7 +89,7 @@ function Home2() {
                   <FaLinkedinIn />
                 </a>
               </li>
-              <li className="social-icons">
+              {/* <li className="social-icons">
                 <a
                   href="https://www.instagram.com/soumyajit4419"
                   target="_blank"
@@ -101,7 +98,7 @@ function Home2() {
                 >
                   <AiFillInstagram />
                 </a>
-              </li>
+              </li> */}
             </ul>
           </Col>
         </Row>
