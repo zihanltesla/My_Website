@@ -62,6 +62,16 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/life"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineUser style={{ marginBottom: "2px" }} /> Life
+              </Nav.Link>
+            </Nav.Item>
+
             {/* <Nav.Item>  
               <Nav.Link
                 as={Link}
