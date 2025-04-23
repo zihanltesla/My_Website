@@ -1,0 +1,40 @@
+
+.popup-animation {
+    animation: dropFade 0.8s ease forwards;
+  }
+  
+  @keyframes dropFade {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+.marker-emoji {
+  animation: bounceIn 0.6s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0) translateY(-50px);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) translateY(10px);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.9) translateY(-5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}

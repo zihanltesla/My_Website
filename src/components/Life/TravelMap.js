@@ -1,18 +1,16 @@
 // src/components/About/TravelMap.js
-import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import React, { useEffect, useState, useRef } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import "./TravelMap.css";
 
-// 自定义 Emoji 图标样式
 const emojiIcon = new L.DivIcon({
-  html: "<div style='font-size: 24px;'>📍</div>",
+  html: "<div class='marker-emoji'>📍</div>",
   iconSize: [30, 30],
   className: "emoji-marker",
 });
 
-
-// 每个地点关联独立照片
 const places = [
   { name: "🇨🇳 Beijing, China", lat: 39.9042, lng: 116.4074, photo: require("../../Assets/swiss.jpg") },
   { name: "🇫🇷 Paris, France", lat: 48.8566, lng: 2.3522, photo: require("../../Assets/paris.jpg") },
@@ -25,30 +23,32 @@ const places = [
   { name: "🇧🇪 Belgium", lat: 50.8503, lng: 4.3517, photo: require("../../Assets/swiss.jpg") },
   { name: "🇨🇿 Prague, Czech Republic", lat: 50.0755, lng: 14.4378, photo: require("../../Assets/swiss.jpg") },
   { name: "🇨🇭 Zurich, Switzerland", lat: 47.3769, lng: 8.5417, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇸🇬 Singapore", lat: 1.3521, lng: 103.8198, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇲🇾 Kuala Lumpur, Malaysia", lat: 3.1390, lng: 101.6869, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇨🇳 Nanning, China", lat: 22.8170, lng: 108.3669, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇨🇳 Shanghai, China", lat: 31.2304, lng: 121.4737, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇭🇰 Hong Kong", lat: 22.3193, lng: 114.1694, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇻🇳 Vietnam", lat: 21.0285, lng: 105.8542, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇸🇦 Saudi Arabia", lat: 24.7136, lng: 46.6753, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇶🇦 Qatar", lat: 25.276987, lng: 51.520008, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇫🇮 Levi, Finland", lat: 67.8057, lng: 24.8028, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇫🇮 Helsinki, Finland", lat: 60.1695, lng: 24.9354, photo: require("../../Assets/swiss.jpg") },
+  { name: "🇳🇴 Oslo, Norway", lat: 59.9139, lng: 10.7522, photo: require("../../Assets/swiss.jpg") },
 ];
 
 function AnimatedMarker({ place }) {
-  const map = useMap();
+  const markerRef = useRef(null);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      map.flyTo([place.lat, place.lng], 5, {
-        duration: 1.5
-      });
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, [map, place.lat, place.lng]);
+    if (markerRef.current) {
+      markerRef.current.openPopup();
+    }
+  }, []);
 
   return (
-    <Marker position={[place.lat, place.lng]} icon={emojiIcon}>
-      <Popup
-        offset={[0, -10]}
-        autoOpen={true}
-        closeButton={false}
-        closeOnClick={false}
-        autoPan={false}
-      >
-        <div style={{ textAlign: "center" }}>
+    <Marker position={[place.lat, place.lng]} icon={emojiIcon} ref={markerRef}>
+      <Popup closeButton={false}>
+        <div className="popup-animation">
           <div style={{ fontSize: "14px", marginBottom: "5px" }}>{place.name}</div>
           <img
             src={place.photo}
@@ -65,7 +65,6 @@ function AnimatedMarker({ place }) {
   );
 }
 
-
 function TravelMap() {
   const [visibleMarkers, setVisibleMarkers] = useState([]);
 
@@ -78,7 +77,7 @@ function TravelMap() {
       } else {
         clearInterval(interval);
       }
-    }, 1200);
+    }, 800);
 
     return () => clearInterval(interval);
   }, []);
