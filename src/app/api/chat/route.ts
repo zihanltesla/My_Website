@@ -1,10 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Initialize OpenAI client - will be created when needed
+let openai: OpenAI | null = null;
+
+function getOpenAIClient() {
+  if (!openai) {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OpenAI API key not configured');
+    }
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+  return openai;
+}
 
 // System prompt to define the AI assistant's personality and knowledge
 const SYSTEM_PROMPT = `You are Zihan Liu's AI assistant on his personal portfolio website. You are knowledgeable about Zihan's background and work:
@@ -39,10 +49,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Check if API key is available
     if (!process.env.OPENAI_API_KEY) {
+      console.error('OpenAI API key not configured');
       return NextResponse.json(
-        { error: 'OpenAI API key not configured' },
-        { status: 500 }
+        { error: 'AI service is currently unavailable. Please try again later.' },
+        { status: 503 }
       );
     }
 
@@ -56,8 +68,11 @@ export async function POST(request: NextRequest) {
       { role: 'user', content: message }
     ];
 
+    // Get OpenAI client
+    const client = getOpenAIClient();
+
     // Call OpenAI API
-    const completion = await openai.chat.completions.create({
+    const completion = await client.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: messages as any,
       max_tokens: 500,

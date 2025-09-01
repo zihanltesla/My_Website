@@ -26,6 +26,7 @@ jobs:
       run: npm run build
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        NODE_ENV: production
         
     - name: Authenticate to Google Cloud
       uses: google-github-actions/auth@v2
