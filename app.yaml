@@ -9,28 +9,28 @@ handlers:
     static_files: out/_next/static/js/\1
     upload: out/_next/static/js/(.*)
     secure: always
-    expiration: "1y"
+    expiration: "365d"
 
   # Next.js static CSS files
   - url: /_next/static/css/(.*)
     static_files: out/_next/static/css/\1
     upload: out/_next/static/css/(.*)
     secure: always
-    expiration: "1y"
+    expiration: "365d"
 
   # Next.js static media files
   - url: /_next/static/media/(.*)
     static_files: out/_next/static/media/\1
     upload: out/_next/static/media/(.*)
     secure: always
-    expiration: "1y"
+    expiration: "365d"
 
   # Next.js static chunks and other assets
   - url: /_next/static/(.*)
     static_files: out/_next/static/\1
     upload: out/_next/static/(.*)
     secure: always
-    expiration: "1y"
+    expiration: "365d"
 
   # Public images
   - url: /images/(.*)
