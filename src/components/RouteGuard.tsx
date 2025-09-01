@@ -29,17 +29,28 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const checkRouteEnabled = () => {
         if (!pathname) return false;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        console.log('RouteGuard: Checking pathname:', pathname);
+        console.log('RouteGuard: Available routes:', routes);
+
+        // Normalize pathname by removing trailing slash (except for root)
+        const normalizedPathname = pathname === '/' ? pathname : pathname.replace(/\/$/, '');
+        console.log('RouteGuard: Normalized pathname:', normalizedPathname);
+
+        if (normalizedPathname in routes) {
+          const enabled = routes[normalizedPathname as keyof typeof routes];
+          console.log('RouteGuard: Route enabled:', enabled);
+          return enabled;
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (normalizedPathname?.startsWith(route) && routes[route]) {
+            console.log('RouteGuard: Dynamic route matched:', route);
             return true;
           }
         }
 
+        console.log('RouteGuard: No route matched, returning false');
         return false;
       };
 

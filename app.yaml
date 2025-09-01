@@ -59,8 +59,42 @@ handlers:
     upload: out/index.html
     secure: always
 
-  # All other routes (for SPA routing)
+  # About page
+  - url: /about/?
+    static_files: out/about/index.html
+    upload: out/about/index.html
+    secure: always
+
+  # Gallery page
+  - url: /gallery/?
+    static_files: out/gallery/index.html
+    upload: out/gallery/index.html
+    secure: always
+
+  # Blog pages
+  - url: /blog/?
+    static_files: out/blog/index.html
+    upload: out/blog/index.html
+    secure: always
+
+  - url: /blog/(.+)/?
+    static_files: out/blog/\1/index.html
+    upload: out/blog/.*/index.html
+    secure: always
+
+  # Work pages
+  - url: /work/?
+    static_files: out/work/index.html
+    upload: out/work/index.html
+    secure: always
+
+  - url: /work/(.+)/?
+    static_files: out/work/\1/index.html
+    upload: out/work/.*/index.html
+    secure: always
+
+  # All other routes (fallback to 404)
   - url: /.*
-    static_files: out/index.html
-    upload: out/index.html
+    static_files: out/404.html
+    upload: out/404.html
     secure: always
