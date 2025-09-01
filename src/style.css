@@ -1,19 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap');
 
 html {
-  --section-background-color: #000000;
-  --image-gradient: linear-gradient(
-    to bottom right,
-    rgba(0, 0, 0, 0.9),
-    rgba(20, 20, 30, 0.95)
-  );
-  --imp-text-color: #00f0ff;
-  --text-color: #e0e0e0;
-  --text-secondary: #a0a0a0;
-  --tech-glow: 0 0 10px rgba(0, 240, 255, 0.7);
-  --tech-border: 1px solid rgba(0, 240, 255, 0.3);
+  --section-background-color: #F5F5F5;
+  --image-gradient: none;
+  --imp-text-color: #0056b3;
+  --text-color: #333333;
+  --text-secondary: #666666;
+  --tech-glow: none;
+  --tech-border: 1px solid #cccccc;
   
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -79,11 +75,11 @@ button:focus {
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: rgba(0, 0, 0, 0.9) !important;
-  transition: all 0.3s ease-out 0s !important;
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3) !important;
-  backdrop-filter: blur(15px) !important;
-  border-bottom: var(--tech-border) !important;
+  background-color: #ffffff !important;
+  transition: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  border-bottom: 1px solid #e0e0e0 !important;
 }
 
 .navbar {
@@ -265,9 +261,7 @@ button:focus {
 .home-section {
   position: relative;
   z-index: -1;
-  background: 
-    linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
-    url(./Assets/home-bg.jpg) center/cover no-repeat;
+  background: #ffffff;
   padding-bottom: 30px !important;
   padding-top: 30px !important;
   min-height: 100vh;
@@ -305,8 +299,8 @@ button:focus {
   font-weight: 700;
   margin-bottom: 0.5rem;
   line-height: 1.2;
-  color: var(--imp-text-color);
-  text-shadow: var(--tech-glow);
+  color: #0056b3;
+  text-shadow: none;
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 1px;
   animation: fadeIn 0.8s ease-out 0.2s both, neonPulse 2s infinite alternate;
@@ -318,8 +312,8 @@ button:focus {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  color: white;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--imp-text-color);
+  color: #333333;
+  text-shadow: none;
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 1px;
   animation: fadeIn 0.8s ease-out 0.4s both;
@@ -493,12 +487,12 @@ button:focus {
 /* Footer */
 /* --------- */
 .footer {
-  background-color: #000;
+  background-color: #f8f9fa;
   bottom: 0 !important;
   padding-top: 20px !important;
   padding-bottom: 15px !important;
-  border-top: var(--tech-border);
-  box-shadow: 0 -5px 15px rgba(0, 240, 255, 0.1);
+  border-top: 1px solid #e0e0e0;
+  box-shadow: none;
 }
 
 .footer-copywright {
