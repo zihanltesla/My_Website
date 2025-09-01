@@ -23,17 +23,26 @@ npm install
 npm run dev
 ```
 
-**4. Edit config**
+**4. Set up environment variables**
+```
+cp .env.example .env.local
+```
+Edit `.env.local` and add your OpenAI API key:
+```
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+**5. Edit config**
 ```
 src/resources/once-ui.config.js
 ```
 
-**5. Edit content**
+**6. Edit content**
 ```
 src/resources/content.js
 ```
 
-**6. Create blog posts / projects**
+**7. Create blog posts / projects**
 ```
 Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 ```
@@ -48,6 +57,12 @@ Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfo
 
 ### Once UI
 - All tokens, components & features of [Once UI](https://once-ui.com)
+
+### AI Chatbot
+- Interactive AI assistant powered by OpenAI GPT-4o mini
+- Provides information about Zihan's experience, skills, and projects
+- Fixed position chat widget in the bottom-right corner
+- Responsive design that works on all devices
 
 ### SEO
 - Automatic open-graph and X image generation with next/og

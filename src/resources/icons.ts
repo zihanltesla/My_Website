@@ -12,6 +12,9 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiXMark,
+  HiChatBubbleLeftRight,
+  HiPaperAirplane,
 } from "react-icons/hi2";
 
 import {
@@ -57,6 +60,9 @@ export const iconLibrary: Record<string, IconType> = {
   nextjs: SiNextdotjs,
   supabase: SiSupabase,
   figma: SiFigma,
+  close: HiXMark,
+  message: HiChatBubbleLeftRight,
+  send: HiPaperAirplane,
 };
 
 export type IconLibrary = typeof iconLibrary;
