@@ -1,0 +1,66 @@
+# Google App Engine configuration for static Next.js export
+# https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=node.js
+
+runtime: nodejs20
+
+handlers:
+  # Next.js static JavaScript files
+  - url: /_next/static/js/(.*)
+    static_files: out/_next/static/js/\1
+    upload: out/_next/static/js/(.*)
+    secure: always
+    expiration: "1y"
+
+  # Next.js static CSS files
+  - url: /_next/static/css/(.*)
+    static_files: out/_next/static/css/\1
+    upload: out/_next/static/css/(.*)
+    secure: always
+    expiration: "1y"
+
+  # Next.js static media files
+  - url: /_next/static/media/(.*)
+    static_files: out/_next/static/media/\1
+    upload: out/_next/static/media/(.*)
+    secure: always
+    expiration: "1y"
+
+  # Next.js static chunks and other assets
+  - url: /_next/static/(.*)
+    static_files: out/_next/static/\1
+    upload: out/_next/static/(.*)
+    secure: always
+    expiration: "1y"
+
+  # Public images
+  - url: /images/(.*)
+    static_files: out/images/\1
+    upload: out/images/(.*)
+    secure: always
+    expiration: "1d"
+
+  # Public trademarks
+  - url: /trademarks/(.*)
+    static_files: out/trademarks/\1
+    upload: out/trademarks/(.*)
+    secure: always
+    expiration: "1d"
+
+  # Root level static files (favicon, robots.txt, etc.)
+  - url: /(.*\.(json|ico|txt|xml))$
+    static_files: out/\1
+    upload: out/.*\.(json|ico|txt|xml)$
+    secure: always
+    expiration: "1d"
+
+  # Root index page
+  - url: /
+    static_files: out/index.html
+    upload: out/index.html
+    secure: always
+
+  # All other routes (for SPA routing)
+  - url: /.*
+    static_files: out/index.html
+    upload: out/index.html
+    secure: always
