@@ -35,6 +35,21 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
       
-    - name: Deploy to App Engine
+    - name: Create app.yaml with environment variables
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        gcloud app deploy --quiet --set-env-vars OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
+        cat > app.yaml << EOF
+        runtime: nodejs20
+
+        env_variables:
+          NODE_ENV: "production"
+          OPENAI_API_KEY: "${OPENAI_API_KEY}"
+
+        automatic_scaling:
+          min_instances: 0
+          max_instances: 10
+        EOF
+
+    - name: Deploy to App Engine
+      run: gcloud app deploy --quiet
