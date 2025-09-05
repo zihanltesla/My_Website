@@ -92,8 +92,8 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Zihan is a Data Science graduate student at University of Zurich with professional experience at
-        Volvo Cars and Tesla R&D Center. He specializes in software development, CI/CD automation,
+        I am a Data Science graduate student at University of Zurich with professional experience at
+        Volvo Cars and Tesla R&D Center. I specialize in software development, CI/CD automation,
         AI/ML applications, and full-stack development. Co-founder of StartSEOUp.
       </>
     ),
