@@ -127,7 +127,7 @@ gcloud app deploy
 ## Contact & Links
 
 - 🌐 **Website**: [hankyliu.com](https://hankyliu.com)
-- 💼 **LinkedIn**: [linkedin.com/in/zihan-liu](https://www.linkedin.com/in/zihan-liu/)
+- 💼 **LinkedIn**: [linkedin.com/in/zihan-liu](https://www.linkedin.com/in/zihan-liu-682039280/)
 - 🐙 **GitHub**: [github.com/zihanltesla](https://github.com/zihanltesla)
 - 📧 **Email**: [liu3675716@gmail.com](mailto:liu3675716@gmail.com)
 

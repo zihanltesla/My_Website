@@ -29,7 +29,7 @@ const social: Social = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/in/zihan-liu/",
+    link: "https://www.linkedin.com/in/zihan-liu-682039280/",
   },
   {
     name: "Website",
@@ -51,7 +51,7 @@ const home: Home = {
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Software development and CI/CD with AI and data science</>,
   featured: {
-    display: false,
+    display: true,
     title: (
       <Row gap="12" vertical="center">
         <strong className="ml-4">Featured</strong>{" "}
@@ -84,7 +84,7 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: false,
+    display: true,
     link: "https://cal.com",
   },
   intro: {
@@ -244,7 +244,7 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about software development, CI/CD, AI/ML, and data science...",
+  title: "Writing about life, CI/CD, AI/ML, and data science...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route

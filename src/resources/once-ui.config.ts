@@ -17,8 +17,8 @@ const baseURL: string = "https://hankyliu.com";
 const routes: RoutesConfig = {
   "/": true,
   "/about": true,
-  "/work": false,
-  "/blog": false,
+  "/work": true,
+  "/blog": true,
   "/gallery": false,
 };
 
