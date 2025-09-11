@@ -88,6 +88,7 @@ export default function About() {
             gap="m"
             flex={3}
             horizontal="center"
+            s={{ position: "static" }}
           >
             <Avatar src={person.avatar} size="xl" />
             <Row gap="8" vertical="center">

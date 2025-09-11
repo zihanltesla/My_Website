@@ -14,12 +14,28 @@
     top: var(--static-space-64);
 }
 
+.textAlign {
+    text-align: center;
+}
+
+.blockAlign {
+    align-self: center;
+}
+
+.mobileContainer {
+    padding-bottom: var(--static-space-80);
+}
+
 @media (max-width: breakpoints.$s) {
     .avatar {
-        position: relative;
+        position: static !important;
         top: auto;
-        z-index: 1;
-        margin-bottom: var(--static-space-24);
+        margin-bottom: var(--static-space-32);
+        padding-bottom: var(--static-space-24);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .textAlign {
@@ -28,24 +44,6 @@
 
     .blockAlign {
         align-self: center;
-        z-index: 2;
         position: relative;
-    }
-}
-
-// Add mobile-specific container styles to prevent overlap
-.mobileContainer {
-    @media (max-width: breakpoints.$s) {
-        padding-bottom: var(--static-space-80);
-        min-height: 100vh;
-
-        // Ensure proper spacing between sections
-        & > * {
-            margin-bottom: var(--static-space-16);
-        }
-
-        // Prevent content from sticking to edges
-        padding-left: var(--static-space-16);
-        padding-right: var(--static-space-16);
     }
 }
