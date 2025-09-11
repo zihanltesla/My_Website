@@ -134,7 +134,13 @@ export function Chatbot() {
             }}
           >
             <Row gap="12" vertical="center">
-              <div className={styles.avatar}>🤖</div>
+              <div className={styles.avatar}>
+                <img
+                  src="/images/ai-assistant-avatar.jpg"
+                  alt="AI Assistant"
+                  className={styles.avatarImage}
+                />
+              </div>
               <Column gap="2">
                 <Text variant="label-default-s" weight="strong">
                   AI Assistant
