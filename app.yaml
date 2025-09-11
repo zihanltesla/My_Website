@@ -13,3 +13,27 @@ env_variables:
 automatic_scaling:
   min_instances: 0
   max_instances: 10
+
+# Static file handlers for images and other assets
+handlers:
+  # Handle static images
+  - url: /images
+    static_dir: public/images
+    secure: always
+
+  # Handle favicon and other root static files
+  - url: /favicon.ico
+    static_files: public/favicon.ico
+    upload: public/favicon.ico
+    secure: always
+
+  # Handle robots.txt
+  - url: /robots.txt
+    static_files: public/robots.txt
+    upload: public/robots.txt
+    secure: always
+
+  # Handle all other requests with Next.js
+  - url: /.*
+    script: auto
+    secure: always
