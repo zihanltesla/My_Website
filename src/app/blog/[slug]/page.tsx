@@ -83,8 +83,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       );
     } else if (slug === 'nice-cannes-travel-diary') {
       images.push(
-        '/images/blog/1.jpg',
-        '/images/blog/2.jpg'
+        '/images/blog/1.jpg'
       );
     }
 
