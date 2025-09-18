@@ -61,11 +61,9 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
     return null;
   }
 
-  // Try to use WebP version first
-  let optimizedSrc = src;
-  if (src.match(/\.(jpg|jpeg|png)$/i)) {
-    optimizedSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-  }
+  // For now, let's use the original image to avoid WebP issues
+  // We can optimize this later with proper client-side handling
+  const imageSrc = src;
 
   // Determine if this is a critical image (first few images should be prioritized)
   const isHeroImage = src.includes('colleagues') || src.includes('fly') || src.includes('sunset');
@@ -79,7 +77,7 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
       border="neutral-alpha-medium"
       sizes="(max-width: 960px) 100vw, 960px"
       alt={alt}
-      src={optimizedSrc}
+      src={imageSrc}
       priority={isHeroImage}
       {...props}
     />
