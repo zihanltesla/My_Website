@@ -14,11 +14,16 @@
 
 ### 1. 修复 React SSR 水合错误 ✅
 
-**问题**: `TimeDisplay` 组件在服务端和客户端渲染不同内容
+**问题**:
+- `TimeDisplay` 组件在服务端和客户端渲染不同内容
+- `Chatbot` 组件初始消息使用 `new Date()` 导致时间戳不匹配
+- 浏览器自动翻译导致导航标签显示不一致 ("About" → "关于")
+
 **解决方案**:
-- 添加 `isClient` 状态防止水合不匹配
-- 修复 `formatDate` 函数的时区问题
-- 使用 `typeof window !== 'undefined'` 检查客户端环境
+- 添加 `ClientOnly` 组件防止水合不匹配
+- 修复 `Chatbot` 初始化逻辑，延迟到客户端执行
+- 硬编码导航标签文本，添加 `translate="no"` 属性防止自动翻译
+- 使用 `suppressHydrationWarning` 和客户端检查
 
 ### 2. 启用 Next.js 图片优化 ✅
 
@@ -105,12 +110,20 @@ npm run build
 gcloud app deploy
 ```
 
-### 2. 监控性能
-- 使用 Google PageSpeed Insights 测试
-- 监控 Core Web Vitals
-- 检查控制台是否还有错误
+### 2. 验证修复
+在部署后，请检查：
+- ✅ 浏览器控制台没有 React 错误 #418
+- ✅ 页面加载速度明显提升
+- ✅ 导航标签显示正确（不被翻译）
+- ✅ 时间显示正常工作
+- ✅ 聊天机器人正常初始化
 
-### 3. 进一步优化 (可选)
+### 3. 性能测试
+- 使用 [Google PageSpeed Insights](https://pagespeed.web.dev/) 测试
+- 监控 Core Web Vitals
+- 使用浏览器开发者工具检查网络请求
+
+### 4. 进一步优化 (可选)
 - 考虑使用 CDN (如 Cloudflare)
 - 实施服务端缓存 (Redis)
 - 添加预加载关键资源

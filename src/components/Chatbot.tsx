@@ -23,14 +23,8 @@ interface Message {
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      text: "Hi! I'm Zihan's AI assistant. Feel free to ask me anything about his work, experience, or this portfolio! 👋",
-      isUser: false,
-      timestamp: new Date()
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -38,6 +32,21 @@ export function Chatbot() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Initialize messages on client side to avoid hydration mismatch
+  useEffect(() => {
+    if (!isInitialized) {
+      setMessages([
+        {
+          id: '1',
+          text: "Hi! I'm Zihan's AI assistant. Feel free to ask me anything about his work, experience, or this portfolio! 👋",
+          isUser: false,
+          timestamp: new Date()
+        }
+      ]);
+      setIsInitialized(true);
+    }
+  }, [isInitialized]);
 
   useEffect(() => {
     scrollToBottom();

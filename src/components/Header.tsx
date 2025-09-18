@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
+import { ClientOnly } from "./ClientOnly";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -53,6 +54,11 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <>
@@ -82,7 +88,11 @@ export const Header = () => {
         }}
       >
         <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+          {display.location && (
+            <Row s={{ hide: true }} suppressHydrationWarning>
+              {isClient ? person.location : "Europe/Zurich"}
+            </Row>
+          )}
         </Row>
         <Row fillWidth horizontal="center">
           <Row
@@ -94,7 +104,7 @@ export const Header = () => {
             horizontal="center"
             zIndex={1}
           >
-            <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
+            <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning data-translate="no">
               {routes["/"] && (
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}
@@ -105,7 +115,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="person"
                       href="/about"
-                      label={about.label}
+                      label="About"
                       selected={pathname === "/about"}
                     />
                   </Row>
@@ -124,7 +134,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="grid"
                       href="/work"
-                      label={work.label}
+                      label="Work"
                       selected={pathname.startsWith("/work")}
                     />
                   </Row>
@@ -143,7 +153,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="book"
                       href="/blog"
-                      label={blog.label}
+                      label="Blog"
                       selected={pathname.startsWith("/blog")}
                     />
                   </Row>
@@ -162,7 +172,7 @@ export const Header = () => {
                     <ToggleButton
                       prefixIcon="gallery"
                       href="/gallery"
-                      label={gallery.label}
+                      label="Gallery"
                       selected={pathname.startsWith("/gallery")}
                     />
                   </Row>
@@ -193,7 +203,11 @@ export const Header = () => {
             gap="20"
           >
             <Flex s={{ hide: true }}>
-              {display.time && <TimeDisplay timeZone={person.location} />}
+              {display.time && (
+                <ClientOnly fallback={<span style={{ visibility: 'hidden' }}>00:00:00</span>}>
+                  <TimeDisplay timeZone={person.location} />
+                </ClientOnly>
+              )}
             </Flex>
           </Flex>
         </Flex>
