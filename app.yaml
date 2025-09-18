@@ -7,9 +7,39 @@ runtime: nodejs20
 # The OPENAI_API_KEY will be injected during deployment
 env_variables:
   NODE_ENV: "production"
+  # Enable Node.js optimizations
+  NODE_OPTIONS: "--max-old-space-size=1024"
 
 # For Next.js applications with API routes, we need to run the Node.js server
 # instead of serving static files
 automatic_scaling:
-  min_instances: 0
+  min_instances: 1  # Keep at least 1 instance warm to avoid cold starts
   max_instances: 10
+  target_cpu_utilization: 0.6
+  target_throughput_utilization: 0.6
+
+# Resource allocation for better performance
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 10
+
+# Network settings for better performance
+network:
+  forwarded_ports:
+    - 8080
+
+# Health check configuration
+readiness_check:
+  path: "/"
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+
+liveness_check:
+  path: "/"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 4
+  success_threshold: 2

@@ -16,8 +16,12 @@ type TimeDisplayProps = {
 
 const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" }) => {
   const [currentTime, setCurrentTime] = useState("");
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // Set isClient to true after component mounts
+    setIsClient(true);
+
     const updateTime = () => {
       const now = new Date();
       const options: Intl.DateTimeFormatOptions = {
@@ -36,6 +40,11 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
 
     return () => clearInterval(intervalId);
   }, [timeZone, locale]);
+
+  // Prevent hydration mismatch by not rendering time until client-side
+  if (!isClient) {
+    return <span style={{ visibility: 'hidden' }}>00:00:00</span>;
+  }
 
   return <>{currentTime}</>;
 };

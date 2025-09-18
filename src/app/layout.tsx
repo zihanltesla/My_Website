@@ -14,6 +14,7 @@ import {
   SpacingToken,
 } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers, Chatbot } from "@/components";
+import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
@@ -164,6 +165,7 @@ export default async function RootLayout({
           </Flex>
           <Footer />
           <Chatbot />
+          <PerformanceMonitor />
         </Column>
       </Providers>
     </Flex>
