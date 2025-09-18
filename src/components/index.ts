@@ -9,3 +9,7 @@ export { ScrollToHash } from "@/components/ScrollToHash";
 export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
 export { Chatbot } from "@/components/Chatbot";
+export { OptimizedImage } from "./OptimizedImage";
+export { PerformanceMonitor } from "./PerformanceMonitor";
+export { ClientOnly } from "./ClientOnly";
+export { ImagePreloader } from "./ImagePreloader";

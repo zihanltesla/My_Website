@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { CustomMDX, ScrollToHash } from "@/components";
+import { ImagePreloader } from "@/components/ImagePreloader";
 import {
   Meta,
   Schema,
@@ -69,7 +70,17 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       src: person.avatar,
     })) || [];
 
+  // Extract critical images for preloading (first few images in the post)
+  const criticalImages = [
+    post.metadata.image,
+    '/images/blog/gothenburg_volvo/colleagues.jpg',
+    '/images/blog/gothenburg_volvo/fly.jpg',
+    '/images/blog/gothenburg_volvo/sunset_gothenburg_arrive.jpg'
+  ].filter(Boolean) as string[];
+
   return (
+    <>
+      <ImagePreloader images={criticalImages} />
     <Row fillWidth>
       <Row maxWidth={12} m={{ hide: true }} />
       <Row fillWidth horizontal="center">
@@ -157,5 +168,6 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
         <HeadingNav fitHeight />
       </Column>
     </Row>
+    </>
   );
 }
