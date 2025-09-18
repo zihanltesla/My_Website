@@ -15,6 +15,7 @@ import {
 } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers, Chatbot } from "@/components";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
+import { GlobalPreloader } from "@/components/GlobalPreloader";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
@@ -167,6 +168,7 @@ export default async function RootLayout({
           <Footer />
           <Chatbot />
           <PerformanceMonitor />
+          <GlobalPreloader />
         </Column>
       </Providers>
     </Flex>

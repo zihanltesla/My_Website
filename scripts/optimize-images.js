@@ -10,17 +10,20 @@ const IMAGES_DIR = path.join(PUBLIC_DIR, 'images');
 // Image optimization settings
 const OPTIMIZATION_SETTINGS = {
   jpeg: {
-    quality: 85,
+    quality: 80,
     progressive: true,
     mozjpeg: true
   },
   webp: {
-    quality: 85,
-    effort: 6
+    quality: 80, // Reduced for better compression
+    effort: 6,
+    lossless: false,
+    nearLossless: false,
+    smartSubsample: true
   },
   avif: {
-    quality: 80,
-    effort: 4
+    quality: 75,
+    effort: 6 // Increased effort for better compression
   }
 };
 

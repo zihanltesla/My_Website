@@ -70,13 +70,28 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
       src: person.avatar,
     })) || [];
 
-  // Extract critical images for preloading (first few images in the post)
-  const criticalImages = [
-    post.metadata.image,
-    '/images/blog/gothenburg_volvo/colleagues.jpg',
-    '/images/blog/gothenburg_volvo/fly.jpg',
-    '/images/blog/gothenburg_volvo/sunset_gothenburg_arrive.jpg'
-  ].filter(Boolean) as string[];
+  // Extract critical images for preloading based on the specific post
+  const getCriticalImages = (slug: string, postImage?: string) => {
+    // Always include avatar as it's shown on every blog post
+    const images = [person.avatar, postImage].filter(Boolean) as string[];
+
+    // Add post-specific critical images
+    if (slug === 'gothenburg-internship-experience') {
+      images.push(
+        '/images/blog/gothenburg_volvo/colleagues.jpg',
+        '/images/blog/gothenburg_volvo/fly.jpg'
+      );
+    } else if (slug === 'nice-cannes-travel-diary') {
+      images.push(
+        '/images/blog/1.jpg',
+        '/images/blog/2.jpg'
+      );
+    }
+
+    return images;
+  };
+
+  const criticalImages = getCriticalImages(post.slug, post.metadata.image);
 
   return (
     <>

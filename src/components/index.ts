@@ -13,3 +13,4 @@ export { OptimizedImage } from "./OptimizedImage";
 export { PerformanceMonitor } from "./PerformanceMonitor";
 export { ClientOnly } from "./ClientOnly";
 export { ImagePreloader } from "./ImagePreloader";
+export { GlobalPreloader } from "./GlobalPreloader";
